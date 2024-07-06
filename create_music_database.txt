@@ -1,0 +1,64 @@
+CREATE DATABASE music_db;
+USE music_db;
+
+CREATE TABLE artists (
+    artist_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    genre VARCHAR(255),
+    country VARCHAR(255)
+);
+
+CREATE TABLE albums (
+    album_id INT AUTO_INCREMENT PRIMARY KEY,
+    artist_id INT,
+    title VARCHAR(255) NOT NULL,
+    release_year YEAR,
+    FOREIGN KEY (artist_id) REFERENCES artists(artist_id)
+);
+
+CREATE TABLE songs (
+    song_id INT AUTO_INCREMENT PRIMARY KEY,
+    album_id INT,
+    title VARCHAR(255) NOT NULL,
+    duration TIME,
+    track_number INT,
+    FOREIGN KEY (album_id) REFERENCES albums(album_id)
+);
+
+INSERT INTO artists (name, genre, country) VALUES
+('The Beatles', 'Rock', 'UK'),
+('Taylor Swift', 'Pop', 'USA'),
+('Adele', 'Soul', 'UK'),
+('Hozier', 'Indie Rock', 'Ireland'),
+('Michael Jackson', 'Pop', 'USA');
+
+INSERT INTO albums (artist_id, title, release_year) VALUES
+(1, 'Abbey Road', 1969),
+(1, 'Revolver', 1966),
+(2, '1989', 2014),
+(2, 'Fearless', 2008),
+(3, '25', 2015),
+(4, 'Hozier', 2014),
+(4, 'Wasteland, Baby!', 2019),
+(5, 'Thriller', 1982),
+(5, 'Bad', 1987);
+
+INSERT INTO songs (album_id, title, duration, track_number) VALUES
+(1, 'Come Together', '04:19', 1),
+(1, 'Something', '03:03', 2),
+(2, 'Eleanor Rigby', '02:07', 1),
+(2, 'Yellow Submarine', '02:38', 2),
+(3, 'Blank Space', '03:51', 1),
+(3, 'Style', '03:51', 2),
+(4, 'Love Story', '03:55', 1),
+(4, 'You Belong with Me', '03:52', 2),
+(5, 'Hello', '04:55', 1),
+(5, 'Send My Love', '03:43', 2),
+(6, 'Take Me to Church', '04:01', 1),
+(6, 'From Eden', '04:43', 2),
+(7, 'Almost (Sweet Music)', '03:38', 1),
+(7, 'Movement', '03:57', 2),
+(8, 'Thriller', '05:57', 1),
+(8, 'Beat It', '04:18', 2),
+(9, 'Bad', '04:07', 1),
+(9, 'Smooth Criminal', '04:17', 2);
