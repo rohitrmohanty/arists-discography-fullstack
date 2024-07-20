@@ -1,19 +1,20 @@
+//Step #2 Frontend
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ArtistCard from './ArtistCard';
+import ArtistCard from './ArtistCard'; //Step #4 JSX
 import AlbumCard from './AlbumCard';
 import SearchBar from './SearchBar';
 
 const App = () => {
-  const [artists, setArtists] = useState([]);
+  const [artists, setArtists] = useState([]); // React UseState empty array is defined for artists
   const [albums, setAlbums] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    // Fetch artists
+    // Fetch artists from Express.js Server
     axios.get('http://localhost:3000/artists')
       .then(response => {
-        setArtists(response.data);
+        setArtists(response.data); //API data
       })
       .catch(error => {
         console.error('Error fetching artists:', error);
@@ -54,8 +55,9 @@ const App = () => {
       <h1>Artists</h1>
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <div style={styles.cardContainer}>
-        {artists.map(artist => (
-          <ArtistCard key={artist.artist_id} artist={artist} />
+        {/* Step #3 Iterates thorugh artist const to produce several cards, artists.map (over the API data) */}
+        {artists.map(data => (
+          <ArtistCard key={data.artist_id} artistData={data} />
         ))}
       </div>
 

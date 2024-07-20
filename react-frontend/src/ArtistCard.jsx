@@ -1,11 +1,11 @@
 import React from 'react';
 
-const ArtistCard = ({ artist }) => {
+const ArtistCard = ({ artistData }) => {
   return (
     <div style={styles.card}>
-      <h2>{artist.name}</h2>
-      <p><strong>Genre:</strong> {artist.genre}</p>
-      <p><strong>Country:</strong> {artist.country}</p>
+      <h2>{artistData.name}</h2> 
+      <p><strong>Genre:</strong> {artistData.genre}</p>
+      <p><strong>Country:</strong> {artistData.country}</p>
     </div>
   );
 };
