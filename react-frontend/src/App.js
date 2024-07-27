@@ -50,6 +50,14 @@ const App = () => {
     }
   }, [searchQuery]);
 
+  const retriveArtistName = (artistId) => {
+    console.log(artistId)
+    const found = artists.find((element) => element.artist_id == artistId);
+    console.log(found.name);
+    return found.name
+    
+  }
+
   return (
     <div style={styles.container}>
       <h1>Artists</h1>
@@ -63,9 +71,12 @@ const App = () => {
 
       <h1>Albums</h1>
       <div style={styles.cardContainer}>
-        {albums.map(album => (
-          <AlbumCard key={album.album_id} album={album} />
-        ))}
+        {albums.map(album => {
+          const artistsName = retriveArtistName(album.artist_id)
+          return (
+          
+          <AlbumCard key={album.album_id} album={album} artistsName={artistsName} />
+        )})}
       </div>
     </div>
   );

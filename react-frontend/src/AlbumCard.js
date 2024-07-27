@@ -1,12 +1,12 @@
 import React from 'react';
 
-const AlbumCard = ({ album }) => {
-  console.log({album}) /*added to fix frontend bug*/
+const AlbumCard = ({ album, artistsName }) => {
+  // console.log({album}) /*added to fix frontend bug*/
   return (
     <div style={styles.card}>
       <h2>{album.title}</h2>
       <p><strong>Release Year:</strong> {album.release_year}</p> {/*Frontend bug - naming convention was corrected using console.log and browser dev tool*/}
-      <p><strong>Artist:</strong> {album.artistName}</p> {/*Backend bug*/}
+      <p><strong>Artist:</strong> {artistsName}</p> {/*Backend bug*/}
     </div>
   );
 };
